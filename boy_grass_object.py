@@ -28,19 +28,23 @@ class Boy():
         self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y )
 
 
+ballSpeed = 5
+
 class Ball():
     def __init__(self):
+        global ballSpeed
         self.x, self.y = random.randint(0, 800), 599
         self.isBig = True if random.randint(0,100) % 2 == 0 else False
         self.image = load_image('ball21x21.png') if self.isBig == False else load_image('ball41x41.png')
-        self.grasstouchY = 70 if self.isBig == True else 60
-        self.speed = random.randint(5, 20)
+        self.endY = 70 if self.isBig == True else 60
+        self.speed = ballSpeed
+        ballSpeed += 1
 
     def update(self):
-        if self.y > self.grasstouchY:
+        if self.y > self.endY:
             self.y -= self.speed
         else:
-            self.y = self.grasstouchY
+            self.y = self.endY
 
 
     def draw(self):
