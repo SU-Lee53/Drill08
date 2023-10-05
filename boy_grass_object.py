@@ -20,7 +20,7 @@ class Boy():
 
 
     def update(self):
-        self.frame = (self.frame + 1) % 8
+        self.frame = random.randint(0, 7)
         self.x += 5
 
 
