@@ -34,11 +34,11 @@ class Ball():
         self.isBig = True if random.randint(0,100) % 2 == 0 else False
         self.image = load_image('ball21x21.png') if self.isBig == False else load_image('ball41x41.png')
         self.grasstouchY = 70 if self.isBig == True else 60
-
+        self.speed = random.randint(5, 20)
 
     def update(self):
         if self.y > self.grasstouchY:
-            self.y -= 5
+            self.y -= self.speed
         else:
             self.y = self.grasstouchY
 
